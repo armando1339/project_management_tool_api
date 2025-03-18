@@ -9,4 +9,3 @@ RSpec.describe Project, type: :model do
     it { should have_many(:tasks).dependent(:destroy) }
   end
 end
-

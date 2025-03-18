@@ -2,7 +2,7 @@ module Api
   module V1
     class TasksController < ApplicationController
       before_action :set_project
-      before_action :set_task, only: [:show, :update, :destroy]
+      before_action :set_task, only: [ :show, :update, :destroy ]
 
       def index
         @tasks = @project.tasks.where(project_id: params[:project_id])

@@ -7,7 +7,7 @@ Doorkeeper.configure do
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-    User.find_by(id: session[:user_id]) || render(json: { error: 'Unauthorized' }, status: :unauthorized)
+    User.find_by(id: session[:user_id]) || render(json: { error: "Unauthorized" }, status: :unauthorized)
   end
 
   resource_owner_from_credentials do |_routes|
