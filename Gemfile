@@ -53,7 +53,7 @@ group :test do
 
   gem "faker", "~> 3.5", ">= 3.5.1"
 
-  gem "shoulda-matchers", "~> 5.0"
+  gem 'shoulda-matchers', '~> 6.4'
 
   gem "pundit-matchers", "~> 4.0"
 
