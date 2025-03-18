@@ -128,19 +128,22 @@ A workflow in `.github/workflows/ci.yml` was set up to execute:
 
 - ✅ Can view, create, update, and delete projects.
 - ✅ Can view, create, update, and delete tasks.
+- ✅ Can assign and unassign users to tasks.
 - ✅ Can view public repositories from GitHub API.
 
 ### **Project Manager**
 
 - ✅ Can view, create and update projects.
 - ✅ Can view, create, update, and delete tasks.
+- ✅ Can assign and unassign users to tasks
 - ✅ Can view public repositories from GitHub API.
 - 🚫 Cannot delete projects.
 
 ### **Developer**
 
 - ✅ Can view projects.
-- ✅ Can view, create, and update tasks assigned to them.
+- ✅ Can view, create, and update tasks.
+- ✅ Can assign and unassign users to tasks.
 - ✅ Can view public repositories from GitHub API.
 - 🚫 Cannot create or delete projects.
 - 🚫 Cannot delete tasks.
