@@ -8,13 +8,13 @@ Project Management Tool API is an **API-only** application built with **Ruby on 
 
 ## Features
 
-✅ **Project and Task Management** (CRUD)**
-✅ **Authentication with OAuth2 (Doorkeeper)**
-✅ **Role-based Authorization (Pundit)**
-✅ **Endpoints to fetch GitHub repositories**
-✅ **Pagination in JSON responses**
-✅ **Automated testing with RSpec**
-✅ **CI/CD with GitHub Actions**
+- **Project and Task Management** (CRUD)**
+- **Authentication with OAuth2 (Doorkeeper)**
+- **Role-based Authorization (Pundit)**
+- **Endpoints to fetch GitHub repositories**
+- **Pagination in JSON responses**
+- **Automated testing with RSpec**
+- **CI/CD with GitHub Actions**
 
 ---
 
@@ -42,13 +42,13 @@ cd project_management_tool_api
 bundle install
 ```
 
-### **4️⃣ Set Up the Database**
+### **Set Up the Database**
 
 ```sh
 rails db:create && rails db:migrate && rails db:seed
 ```
 
-### **5️⃣ Start the Server**
+### **Start the Server**
 
 ```sh
 rails s
@@ -91,7 +91,7 @@ The project is designed as a **RESTful API**, using Rails in **API-only mode** (
 - **Higher security**
 - **Easier integration with mobile apps and frontend**
 
-### **3️⃣ Authorization with Pundit**
+### **Authorization with Pundit**
 
 **Pundit** is used to define user permissions in policies.
 
@@ -101,11 +101,11 @@ The project is designed as a **RESTful API**, using Rails in **API-only mode** (
 - **Project Manager:** Can create, update, and delete projects and tasks.
 - **Developer:** Can view and update tasks but cannot create or delete projects.
 
-### **4️⃣ GitHub API Integration**
+### **GitHub API Integration**
 
 A `GithubService` was implemented to fetch **popular GitHub repositories**.
 
-### **5️⃣ Automated Testing**
+### **Automated Testing**
 
 Includes:
 
@@ -113,7 +113,7 @@ Includes:
 - **VCR** for integration tests with the GitHub API.
 - **FactoryBot** for generating test data efficiently.
 
-### **6️⃣ CI/CD with GitHub Actions**
+### **CI/CD with GitHub Actions**
 
 A workflow in `.github/workflows/ci.yml` was set up to execute:
 
@@ -125,20 +125,20 @@ A workflow in `.github/workflows/ci.yml` was set up to execute:
 
 ## **User Roles & API Permissions**
 
-### **1️⃣ Admin**
+### **Admin**
 
 - ✅ Can view, create, update, and delete projects.
 - ✅ Can view, create, update, and delete tasks.
 - ✅ Can view public repositories from GitHub API.
 
-### **2️⃣ Project Manager**
+### **Project Manager**
 
 - ✅ Can view, create and update projects.
 - ✅ Can view, create, update, and delete tasks.
 - ✅ Can view public repositories from GitHub API.
 - 🚫 Cannot delete projects.
 
-### **3️⃣ Developer**
+### **Developer**
 
 - ✅ Can view projects.
 - ✅ Can view, create, and update tasks assigned to them.
@@ -146,6 +146,6 @@ A workflow in `.github/workflows/ci.yml` was set up to execute:
 - 🚫 Cannot create or delete projects.
 - 🚫 Cannot delete tasks.
 
-### **4️⃣ Unauthorized Users (Guests)**
+### **Unauthorized Users (Guests)**
 
 - 🚫 Cannot access the API. Authentication is required.
