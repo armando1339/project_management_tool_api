@@ -12,7 +12,6 @@ Project Management Tool API is an **API-only** application built with **Ruby on 
 - **Authentication with OAuth2 (Doorkeeper)**
 - **Role-based Authorization (Pundit)**
 - **Endpoints to fetch GitHub repositories**
-- **Pagination in JSON responses**
 - **Automated testing with RSpec**
 - **CI/CD with GitHub Actions**
 
