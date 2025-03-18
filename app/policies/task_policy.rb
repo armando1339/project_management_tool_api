@@ -18,4 +18,8 @@ class TaskPolicy < ApplicationPolicy
   def destroy?
     user&.admin? || user&.project_manager?
   end
+
+  def assign?
+    user&.admin? || user&.project_manager? || user&.developer?
+  end
 end

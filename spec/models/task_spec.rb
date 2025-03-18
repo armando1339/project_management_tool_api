@@ -11,6 +11,7 @@ RSpec.describe Task, type: :model do
 
   describe "associations" do
     it { should belong_to(:project) }
+    it { should belong_to(:assigned_user).class_name('User').optional }
   end
 
   describe "enums" do

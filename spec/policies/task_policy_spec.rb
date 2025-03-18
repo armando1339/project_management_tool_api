@@ -69,4 +69,22 @@ RSpec.describe TaskPolicy, type: :policy do
       expect(subject).not_to permit(guest, task)
     end
   end
+
+  permissions :assign? do
+    it "allows admins to assign users" do
+      expect(subject).to permit(admin, task)
+    end
+
+    it "allows project managers to assign users" do
+      expect(subject).to permit(project_manager, task)
+    end
+
+    it "allows developers to assign users" do
+      expect(subject).to permit(developer, task)
+    end
+
+    it "denies access to unauthenticated users" do
+      expect(subject).not_to permit(guest, task)
+    end
+  end
 end

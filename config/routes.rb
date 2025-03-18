@@ -13,8 +13,14 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json }  do
     namespace :v1 do
       resources :projects do
-        resources :tasks
+        resources :tasks do
+          member do
+            post :assign_user
+            delete :unassign_user
+          end
+        end
       end
+
       resources :github, only: [] do
         collection do
           get :latest_public_repositories

@@ -6,6 +6,7 @@ RSpec.describe "Tasks API", type: :request do
   let(:developer) { create(:user, :developer) }
   let(:project) { create(:project) }
   let(:task) { create(:task, project: project) }
+  let(:user_to_assign) { create(:user, role: :developer) }
 
   describe "GET /api/v1/projects/:project_id/tasks" do
     it "returns a successful response for authenticated users" do
@@ -112,6 +113,84 @@ RSpec.describe "Tasks API", type: :request do
 
       it "denies access for guest" do
         delete api_v1_project_task_path(project, task)
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+  end
+
+  describe "POST /api/v1/projects/:project_id/tasks/:id/assign_user" do
+    context "when the user is an admin, project manager, or developer" do
+      it "assigns a user as admin" do
+        post assign_user_api_v1_project_task_path(project, task),
+             params: { user_id: user_to_assign.id },
+             headers: auth_headers(admin)
+
+        expect(response).to have_http_status(:ok)
+        expect(task.reload.assigned_user).to eq(user_to_assign)
+      end
+
+      it "assigns a user as project manager" do
+        post assign_user_api_v1_project_task_path(project, task),
+             params: { user_id: user_to_assign.id },
+             headers: auth_headers(project_manager)
+
+        expect(response).to have_http_status(:ok)
+        expect(task.reload.assigned_user).to eq(user_to_assign)
+      end
+
+      it "assigns a user as developer" do
+        post assign_user_api_v1_project_task_path(project, task),
+             params: { user_id: user_to_assign.id },
+             headers: auth_headers(developer)
+
+        expect(response).to have_http_status(:ok)
+        expect(task.reload.assigned_user).to eq(user_to_assign)
+      end
+    end
+
+    context "when the user is a guest" do
+      it "denies access" do
+        post assign_user_api_v1_project_task_path(project, task),
+             params: { user_id: user_to_assign.id }
+
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+  end
+
+  describe "DELETE /api/v1/projects/:project_id/tasks/:id/unassign_user" do
+    before { task.update(assigned_user: user_to_assign) }
+
+    context "when the user is an admin, project manager, or developer" do
+      it "removes the assigned user as admin" do
+        delete unassign_user_api_v1_project_task_path(project, task),
+               headers: auth_headers(admin)
+
+        expect(response).to have_http_status(:ok)
+        expect(task.reload.assigned_user).to be_nil
+      end
+
+      it "removes the assigned user as project manager" do
+        delete unassign_user_api_v1_project_task_path(project, task),
+               headers: auth_headers(project_manager)
+
+        expect(response).to have_http_status(:ok)
+        expect(task.reload.assigned_user).to be_nil
+      end
+
+      it "removes the assigned user as developer" do
+        delete unassign_user_api_v1_project_task_path(project, task),
+               headers: auth_headers(developer)
+
+        expect(response).to have_http_status(:ok)
+        expect(task.reload.assigned_user).to be_nil
+      end
+    end
+
+    context "when the user is a guest" do
+      it "denies access" do
+        delete unassign_user_api_v1_project_task_path(project, task)
+
         expect(response).to have_http_status(:unauthorized)
       end
     end

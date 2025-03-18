@@ -32,20 +32,20 @@ project2 = Project.create(
 Task.create(
   title: "Setup Rails API",
   description: "Initialize the Rails API only project",
-  status: "To-Do",
+  status: :to_do,
   project: project1
 )
 
 Task.create(
   title: "Implement Authentication",
   description: "Use Doorkeeper for OAuth2 authentication",
-  status: "In-Progress",
+  status: :in_progress,
   project: project1
 )
 
 Task.create(
   title: "Redesign UI",
   description: "Improve the user interface for better UX",
-  status: "To-Do",
+  status: :done,
   project: project2
 )
