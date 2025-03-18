@@ -57,6 +57,30 @@ The API will be available at `http://localhost:3000`.
 
 ---
 
+## **Authentication (OAuth2 - Doorkeeper)**
+
+This API uses Doorkeeper for authentication, implementing the Resource Owner Password Credentials Grant.
+Obtaining an Access TokenTo authenticate and receive an access token, use the following cURL request:
+
+```bash
+curl -X POST http://localhost:3000/oauth/token \
+  -d "grant_type=password" \
+  -d "email=admin@example.com" \
+  -d "password=Password" \
+  -d "client_id=<CLIENT_ID>" \
+  -d "client_secret=<CLIENT_SECRET>"
+```
+
+Using the Access TokenOnce you have the token, include it in the Authorization header for subsequent API requests:
+
+```bash
+curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" http://localhost:3000/api/v1/projects
+```
+
+This will authenticate the request and grant access based on the user's role.
+
+---
+
 ## **Running Tests**
 
 To run automated tests, use:

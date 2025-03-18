@@ -1,21 +1,28 @@
+Doorkeeper::Application.create!(
+  name: "Project Management Frontend",
+  redirect_uri: "http://example.com",
+  scopes: "",
+  confidential: true
+)
+
 admin = User.create(
   email: "admin@example.com",
-  password: "P@$$word1234",
-  password_confirmation: "P@$$word1234",
+  password: "Password",
+  password_confirmation: "Password",
   role: :admin
 )
 
 pm = User.create(
   email: "pm@example.com",
-  password: "P@$$word1234",
-  password_confirmation: "P@$$word1234",
+  password: "Password",
+  password_confirmation: "Password",
   role: :project_manager
 )
 
 dev = User.create(
   email: "dev@example.com",
-  password: "P@$$word1234",
-  password_confirmation: "P@$$word1234",
+  password: "Password",
+  password_confirmation: "Password",
   role: :developer
 )
 
