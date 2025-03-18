@@ -95,11 +95,11 @@ The project is designed as a **RESTful API**, using Rails in **API-only mode** (
 
 **Pundit** is used to define user permissions in policies.
 
-**User Roles and Permissions:**
+**User Roles:**
 
-- **Admin:** Full access to all endpoints.
-- **Project Manager:** Can create, update, and delete projects and tasks.
-- **Developer:** Can view and update tasks but cannot create or delete projects.
+- **Admin**
+- **Project Manager**
+- **Developer**
 
 ### **GitHub API Integration**
 
